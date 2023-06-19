@@ -20,10 +20,11 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-- task: AzureWebApp@1
+- task: AzureRmWebAppDeployment@4
   inputs:
-    azureSubscription: 'Samuel AZ Subscription(ffe07651-8dd6-47a9-bdc0-85a36cf5eb71)'
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Samuel AZ Subscription(1)(ffe07651-8dd6-47a9-bdc0-85a36cf5eb71)'
     appType: 'webAppLinux'
-    appName: 'azmyapp'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    runtimeStack: 'TOMCAT|8.5-jre8'
+    WebAppName: 'azmyapp'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    RuntimeStack: 'TOMCAT|8.5-jre8'
